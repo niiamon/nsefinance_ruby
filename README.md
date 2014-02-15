@@ -66,5 +66,5 @@ NseFinance.symbol_closing_price_on('OANDO', '2014-02-10')
 Full documentation of for the api is available at [http://nsefinance.com/docs](http://nsefinance.com/docs)
 
 Other libraries:
-Python: https://github.com/cyberomin/NSEFinance-Python
-PHP: https://github.com/cyberomin/NSEFinance-PHP
+- Python: https://github.com/cyberomin/NSEFinance-Python
+- PHP: https://github.com/cyberomin/NSEFinance-PHP
