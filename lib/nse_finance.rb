@@ -10,10 +10,22 @@ class NseFinance
 	# These are the available keys that the JSON service returns per stock symbol
 	# ['high', 'symbol', 'value', 'deals', 'date','low','units','close','open','change']
 
-  # get closing prices for all the symbols for the trading day
+	# get the full trading day records for all stocks as at closing time
   def self.all_closing_today
   	tmp = Net::HTTP.get( URI(@@base_uri) )
   	JSON.parse(tmp)
+  end
+
+  # get closing prices for all the symbols for the trading day
+  def self.all_closing_prices_today
+  	json_package = Net::HTTP.get( URI(@@base_uri) )
+  	day_records = JSON.parse(json_package)
+
+  	result = Array.new
+  	day_records.map {|day_record|
+  		result << day_record["close"].to_f
+  	}
+  	result
   end
 
   # get the full trading day record for the last 5 trading days for a symbol
