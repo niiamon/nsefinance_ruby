@@ -1,7 +1,14 @@
 Ruby interface to nsefinance.com
 ===============
+## Getting started
+
+Add it to your Gemfile with:
 
 ```ruby
+
+gem 'nse_finance'
+
+Run the bundle command to install it.
 
 require nse_finance
 
