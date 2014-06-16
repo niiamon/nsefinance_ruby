@@ -1,6 +1,6 @@
 require 'json'
 require 'net/http'
-require 'Date'
+require 'date'
 
 class NseFinance
 
