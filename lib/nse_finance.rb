@@ -28,12 +28,12 @@ class NseFinance
   	result
   end
 
-  # get the full trading day record for the last 5 trading days for a symbol
-  def self.symbol(symbol)
-  	result = '{"error" : "Invalid symbol"}'
+  # get the full trading day record for the last 5 trading days for a company
+  def self.get_tradings(company_name)
+  	result = '{"error" : "Invalid company_name"}'
 
-  	if !symbol.nil?
-  		url = "#{@@base_uri}/#{symbol.upcase}"
+  	if !company_name.nil?
+  		url = "#{@@base_uri}/#{company_name.upcase}"
   		tmp = Net::HTTP.get( URI(url) )
   		result = JSON.parse(tmp)
   	end
@@ -41,10 +41,10 @@ class NseFinance
   end
 
   # get the closing price for the last 5 trading days for a symbol
-  def self.symbol_closing_prices(symbol)
+  def self.latest_closing_prices(company_name)
   	result = ''
 
-  	records = NseFinance.symbol(symbol)
+  	records = NseFinance.get_tradings(company_name)
   	if records.include?("error")
   		result = records
   	else
@@ -57,7 +57,7 @@ class NseFinance
   end
 
   # get the full trading day record for a particular symbol on a particular day
-  def self.symbol_on(symbol, date)
+  def self.trading_details(company_name, date)
 
   	# check if the date is in the proper format: YYYY-MM-dd
   	parsed_date = nil
@@ -67,7 +67,7 @@ class NseFinance
 	    result = '{"error" : "Invalid date"}'
 	  end
 
-  	if !symbol.nil? && !parsed_date.nil?
+  	if !company_name.nil? && !parsed_date.nil?
   		url = "#{@@base_uri}/#{symbol.upcase}/#{date}"
   		tmp = Net::HTTP.get( URI(url) )
 
@@ -86,10 +86,10 @@ class NseFinance
   end
 
   # get the closing price for a particular symbol on a particular day
-  def self.symbol_closing_price_on(symbol, date)
+  def self.closing_price(company, date)
 		result = ''
 
-  	record = NseFinance.symbol_on(symbol, date)
+  	record = NseFinance.trading_details(symbol, date)
   	if record.include?("error")
   		result = record
   	elsif record.empty?
@@ -99,5 +99,4 @@ class NseFinance
   	end
   	result
   end
-
 end
