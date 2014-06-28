@@ -35,7 +35,7 @@ NseFinance.all_closing_today
 
 
 # get the full trading day record for the last 5 trading days for a particular symbol
-NseFinance.symbol('OANDO')
+NseFinance.get_tradings('OANDO')
 
 # will return 
 [{"deals"=>"0", "symbol"=>"OANDO", "value"=>"151,898,174.40", "high"=>"19.21", "units"=>"8,273,024", "low"=>"18.16", "date"=>"14/Feb/2014", "close"=>"18.2", "open"=>"19.11", "change"=>"(0.91)"}, {"deals"=>"0", "symbol"=>"OANDO", "value"=>"190,652,316.90", "high"=>"20.95", "units"=>"9,422,433", "low"=>"19.82", "date"=>"13/Feb/2014", "close"=>"20.04", "open"=>"20.8", "change"=>"(0.76)"}, {"deals"=>"0", "symbol"=>"OANDO", "value"=>"88,941,656.77", "high"=>"20.7", "units"=>"4,366,931", "low"=>"20.17", "date"=>"12/Feb/2014", "close"=>"20.6", "open"=>"20.99", "change"=>"(0.39)"}, {"deals"=>"0", "symbol"=>"OANDO", "value"=>"96,953,945.47", "high"=>"21", "units"=>"4,670,001", "low"=>"20.67", "date"=>"11/Feb/2014", "close"=>"20.67", "open"=>"21.75", "change"=>"(1.08)"}, {"deals"=>"0", "symbol"=>"OANDO", "value"=>"243,724,958.80", "high"=>"21.8", "units"=>"11,540,129", "low"=>"20.81", "date"=>"10/Feb/2014", "close"=>"20.81", "open"=>"21.9", "change"=>"(1.09)"}]
@@ -43,7 +43,7 @@ NseFinance.symbol('OANDO')
 {"error"=>"Invalid symbol"}
 
 # if you want only the closing prices for a symbol for the last 5 trading days
-NseFinance.symbol_closing_prices('OANDO')
+NseFinance.latest_closing_prices('OANDO')
 
 # will return
 [18.2, 20.04, 20.6, 20.67, 20.81]
@@ -54,7 +54,7 @@ NseFinance.symbol_closing_prices('OANDO')
 
 
 # get the full trading day record for a particular symbol on a particular day
-NseFinance.symbol_on('OANDO', '2014-02-10')
+NseFinance.trading_details('OANDO', '2014-02-10')
 
 # will return
 {"OANDO"=>{"deals"=>"0", "symbol"=>"OANDO", "value"=>"243,724,958.80", "high"=>"21.8", "units"=>"11,540,129", "low"=>"20.81", "date"=>"10/Feb/2014", "close"=>"20.81", "open"=>"21.9", "change"=>"(1.09)"}}
@@ -67,7 +67,7 @@ NseFinance.symbol_on('OANDO', '2014-02-10')
 {}
 
 # if you want only the closing price for a particular symbol on a particular day
-NseFinance.symbol_closing_price_on('OANDO', '2014-02-10')
+NseFinance.closing_price('OANDO', '2014-02-10')
 ```
 
 Full documentation of for the api is available at [http://nsefinance.com/docs](http://nsefinance.com/docs)
